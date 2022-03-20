@@ -54,4 +54,20 @@ function deleteNote(index) {
     localStorage.setItem("notes", JSON.stringify(notesObj));
     showNotes();
   }
+
+  // search functionality
+
+let search = document.getElementById("searchTxt");
+search.addEventListener("input", function () {
+  let inputVal = search.value.toLowerCase();
+  let noteCard = document.getElementsByClassName("noteCard");
+  Array.from(noteCard).forEach(function (element) {
+    let cardTxt = element.getElementsByTagName("p")[0].innerText;
+    if (cardTxt.includes(inputVal)) {
+      element.style.display = "block";
+    } else {
+      element.style.display = "none";
+    }
+  });
+});
   
